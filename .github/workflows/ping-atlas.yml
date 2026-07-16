@@ -1,0 +1,33 @@
+name: Verificar ATLAS UPTMA cada 15 minutos
+
+on:
+  schedule:
+    # Corre en los minutos 7, 22, 37 y 52 de cada hora (en vez de en punto),
+    # para evitar el momento de mayor carga en la cola de GitHub Actions,
+    # que suele ser justo al inicio de cada hora. Esto no elimina los
+    # retrasos por completo (GitHub trata los horarios como "mejor
+    # esfuerzo"), pero ayuda a reducirlos.
+    - cron: '7,22,37,52 * * * *'
+  # Permite además dispararlo manualmente desde la pestaña "Actions" de GitHub,
+  # útil para probar que todo funciona sin esperar al próximo ciclo.
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Playwright (navegador real)
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Visitar ATLAS UPTMA con un navegador real
+        run: node ping.js
