@@ -1,0 +1,9 @@
+{
+  "name": "atlas-uptma-ping",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Visita automatica de ATLAS UPTMA con navegador real para evadir el filtro anti-bot de InfinityFree en el plan gratuito",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
