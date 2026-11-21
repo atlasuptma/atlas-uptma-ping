@@ -11,7 +11,7 @@
 const { chromium } = require('playwright');
 
 // ⚠️ Cambia esta URL por la tuya real, con tu token.
-const URL = 'https://atlasuptma.rf.gd/atlas_uptma/cron/tareas_automaticas.php?token=atlas2026uptma93&origen=capa3_github';
+const URL = 'https://atlasuptma.rf.gd/atlas_uptma/cron/tareas_automaticas.php?token=atlas_a7746c7acb3d34e4185858b8&origen=capa3_github';
 
 (async () => {
     console.log('Abriendo navegador...');
